@@ -1,13 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Drawing;
+using System.Runtime.CompilerServices;
 using System.Text;
+using ColorFoldApp.Annotations;
 using ColorFoldApp.Models;
 
 namespace ColorFoldApp.ViewModels
 {
-    public class MainViewModel
+    public class MainViewModel :INotifyPropertyChanged
     {
         public static List<Coordinate> Cords = new List<Coordinate>()
         {
@@ -16,7 +19,23 @@ namespace ColorFoldApp.ViewModels
             new Coordinate(){x =-1,y=0},
             new Coordinate(){x=0,y=-1}
         };
-        public ObservableCollection<ObservableCollection<SquareModel>> Squares { get; set; }
+
+        private ObservableCollection<ObservableCollection<SquareModel>> _squares;
+
+        public ObservableCollection<ObservableCollection<SquareModel>> Squares
+        {
+            get => _squares;
+            set {
+                if (_squares == value)
+                {
+                    return;
+                }
+                _squares = value;
+                
+                OnPropertyChanged("Squares");
+            }
+        }
+
         public MainViewModel()
         {
             Random random = new Random();
@@ -35,8 +54,15 @@ namespace ColorFoldApp.ViewModels
             }
 
             Squares[0][0].IsFocused = true;
-            var check = "ok";
+          
         }
 
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        [NotifyPropertyChangedInvocator]
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 }
