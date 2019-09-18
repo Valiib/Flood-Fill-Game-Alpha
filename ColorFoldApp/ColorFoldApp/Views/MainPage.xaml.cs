@@ -103,8 +103,20 @@ namespace ColorFoldApp
 
         private void FindMyNeighboursByColor()
         {
-            foreach (var item in ActiveSquares.ToList())
-                CheckNeighbors(item.Position.x, item.Position.y);
+            var ControlledVar = 0;
+
+            while (ControlledVar != ActiveSquares.Count)
+            {
+                
+                CheckNeighbors(ActiveSquares[ControlledVar].Position.x, ActiveSquares[ControlledVar].Position.y);
+                ControlledVar++;
+            }
+
+//                foreach (var item in ActiveSquares)
+//                    if (!CheckNeighbors(item.Position.x, item.Position.y))
+//                    {
+//                        break;
+//                    };
         }
 
 
@@ -122,7 +134,6 @@ namespace ColorFoldApp
                         ViewModel.Squares[coord.x + x][coord.y + y].IsFocused = true;
                         ActiveSquares.Add(checkingSquare);
                         
-                        CheckNeighbors(coord.x + x, coord.y + y);
                     }
                 }
             return true;
