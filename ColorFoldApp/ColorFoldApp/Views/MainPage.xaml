@@ -29,11 +29,11 @@
                     </Image.Source>
                 </Image>
                 <Frame.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="TapGestureRecognizer_OnTapped">
+                    <TapGestureRecognizer Tapped="RestartGame">
                     </TapGestureRecognizer>
                 </Frame.GestureRecognizers>
             </Frame>
-            <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" x:Name="GameLayout" HorizontalOptions="Center" Padding="20" VerticalOptions="Center">
+            <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" x:Name="GameLayout" HorizontalOptions="Center" Margin="{Binding ViewSize}" VerticalOptions="Center">
             </StackLayout>
         </AbsoluteLayout>
     </ContentPage.Content>
