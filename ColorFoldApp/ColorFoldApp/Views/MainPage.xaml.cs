@@ -61,17 +61,11 @@ namespace ColorFoldApp
                     gameRow.ColumnDefinitions.Add(new ColumnDefinition {Width = GridLength.Auto});
                     gameRow.ColumnSpacing = 0;
                     var BoxSize = ((ScreenWidth *90)/100)/ ViewModel.BoardSize;
-
-
                     var boxView = new BoxView {HeightRequest = BoxSize , WidthRequest = BoxSize };
-
                     tapGestureRecognizer.Tapped += SelectAnotherColor;
-
                     boxView.GestureRecognizers.Add(tapGestureRecognizer);
-
                     boxView.BindingContext = ViewModel.Squares[i][j];
                     boxView.SetBinding(BackgroundColorProperty, "SqColor");
-
                     gameRow.Children.AddHorizontal(boxView);
                 }
 
