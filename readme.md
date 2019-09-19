@@ -1,5 +1,5 @@
-# Flood Fill Game
-
+# Flood Fill Game ~~Alpha~~
+ 
 Source code of the Flood it. 
 
 Flood it game implements **the basic functionality** of matrix and **the save state feature**. 
