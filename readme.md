@@ -17,8 +17,8 @@ On ViewModel you can change type of colors and matrix size + you can add ActiveS
 ### Project structure
 
 ```
-.
-├── Model              # Model Properties, attributes ... etc
-├── ViewModel          # Actual Data
-└── View               # Views that will apper to gamers ! 
+ColorFoldApp.
+             ├── Model              # Model Properties, attributes ... etc
+             ├── ViewModel          # Actual Data
+             └── View               # Views that will apper to gamers ! 
     
