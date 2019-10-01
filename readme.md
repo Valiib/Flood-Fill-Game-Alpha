@@ -20,28 +20,15 @@ On ViewModel you can change type of colors and matrix size + you can add ActiveS
 This game is a puzzle. Its one player mode and your goal is to finish it with minimal color changes.
  Your Color field is at upper left and at the moment you select another color the pattern will follow this way.
  1. Lets say you have color A and at the left is color B and downside is color C
- 
- A B A A B
- C B B B B
- C C B A C
- 
- 2. Your next move is B for example and on the your pattern 
- 
- B B A A B
- C B B B B
- C C B C C
- 
- 3. then C
- 
- C C A A C
- C C C C C
- C C C C C
- 
- 4. Win the when your board is will same properties.
 
- A A A A A
- A A A A A
- A A A A A
+ 2. Your next move is B that will connect A with left element B and they both will become B and will check for next neightbours
+ 
+ 3. Your next move is C that will also connect all of them + controlling neightbours of old A and B from 2 Neightbours to four this number will incrase in case the C is connected to other c from his neighbourhood.
+
+ 4. Win the game when your board is will same properties.
+
+Forexample all board are C's.
+
 
 #####CODE
 Game Model
