@@ -30,7 +30,7 @@ This game is a puzzle. Its one player mode and your goal is to finish it with mi
 Forexample all board are C's.
 
 
-#####CODE
+###CODE
 Game Model
  You have Fields and preferences.
  Fields contains some properties as Color, IsActive, Index.
