@@ -15,7 +15,7 @@ Save state feature is used in when a user does the action on the game
 On ViewModel you can change type of colors and matrix size + you can add ActiveSquares handler for bigger matrix (CPU intensive) but for 50x50 this is playable
 
 
-####How to code and how to play it
+### How to code and how to play it
 
 This game is a puzzle. Its one player mode and your goal is to finish it with minimal color changes.
  Your Color field is at upper left and at the moment you select another color the pattern will follow this way.
@@ -30,7 +30,7 @@ This game is a puzzle. Its one player mode and your goal is to finish it with mi
 Forexample all board are C's.
 
 
-###CODE
+### CODE
 Game Model
  You have Fields and preferences.
  Fields contains some properties as Color, IsActive, Index.
