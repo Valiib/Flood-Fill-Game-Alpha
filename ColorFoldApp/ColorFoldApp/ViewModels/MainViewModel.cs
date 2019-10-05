@@ -12,7 +12,20 @@ namespace ColorFoldApp.ViewModels
 {
     public class MainViewModel :INotifyPropertyChanged
     {
+        private int _counter;
 
+        public int Counter
+        {
+            get => _counter;
+            set
+            {
+                _counter = value;
+                OnPropertyChanged("Counter");
+            }
+        }
+
+      
+        public ObservableCollection<SquareModel> ActiveSquares { get; set; }
 
         public int ViewSize { get; set; } = 0;
 
@@ -49,9 +62,9 @@ namespace ColorFoldApp.ViewModels
 
         public MainViewModel()
         {
-            
+            Counter = 0;
             Squares = new ObservableCollection<ObservableCollection<SquareModel>>();
-
+            ActiveSquares = new ObservableCollection<SquareModel>();
             for (int i = 0; i < BoardSize; i++)
             {
                 var currentSquare = new ObservableCollection<SquareModel>();
@@ -64,8 +77,45 @@ namespace ColorFoldApp.ViewModels
             }
 
             Squares[0][0].IsFocused = true;
-          
+            ActiveSquares.Add(Squares[0][0]);
         }
+
+
+     
+        public void CheckAllNeighbours()
+        {
+            var index = 0;
+            var length = ActiveSquares.Count;
+            while (index != length)
+            {
+                CheckNeighbors(ActiveSquares[index].Position.x, ActiveSquares[index].Position.y);
+                length = ActiveSquares.Count;
+                index++;
+            }
+        }
+
+
+        protected bool CheckNeighbors(int x, int y)
+        {
+            foreach (var coord in Cords)
+                if (this != null && coord.x + x >= 0 && coord.y + y >= 0 &&
+                    this.Squares.Count - 1 >= coord.y + y && this.Squares.Count - 1 >= coord.x + x)
+                {
+                    var checkingSquare = this.Squares[coord.x + x][coord.y + y];
+                    if (!checkingSquare.IsFocused && checkingSquare != null && checkingSquare.SqColor.ToArgb() ==
+                        this.Squares[0][0].SqColor.ToArgb())
+                    {
+                        this.Squares[coord.x + x][coord.y + y].IsFocused = true;
+                        ActiveSquares.Add(checkingSquare);
+                    }
+                }
+
+            return true;
+        }
+
+
+       
+
 
         public event PropertyChangedEventHandler PropertyChanged;
 
